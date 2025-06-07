@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Impressão de Pedido</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+    textarea { width: 100%; height: 200px; margin-bottom: 10px; }
+    .print-area { white-space: pre-wrap; border: 1px solid #ccc; padding: 20px; background: #fff; }
+    button { padding: 10px 20px; margin-right: 10px; }
+    @media print {
+      body * { display: none; }
+      .print-area { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <h2>📦 Impressão de Pedido - Space Burguer</h2>
+  <textarea id="pedido" placeholder="Cole aqui o pedido do WhatsApp..."></textarea>
+  <br/>
+  <button onclick="formatarPedido()">Formatar</button>
+  <button onclick="window.print()">Imprimir</button>
+
+  <div id="saida" class="print-area" style="display:none;"></div>
+
+  <script>
+    function formatarPedido() {
+      const texto = document.getElementById("pedido").value;
+      const saida = document.getElementById("saida");
+      saida.innerText = texto;
+      saida.style.display = "block";
+    }
+  </script>
+</body>
+</html>
