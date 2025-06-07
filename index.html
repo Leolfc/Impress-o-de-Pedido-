@@ -2,34 +2,105 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Impressão de Pedido</title>
+  <title>Imprimir Pedido - Space Burguer</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
-    textarea { width: 100%; height: 200px; margin-bottom: 10px; }
-    .print-area { white-space: pre-wrap; border: 1px solid #ccc; padding: 20px; background: #fff; }
-    button { padding: 10px 20px; margin-right: 10px; }
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f0f0f0;
+    }
+
+    .pedido-container {
+      max-width: 400px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      margin-bottom: 15px;
+    }
+
+    .section strong {
+      display: inline-block;
+      width: 140px;
+      font-weight: bold;
+    }
+
+    .itens {
+      border-top: 1px dashed #ccc;
+      border-bottom: 1px dashed #ccc;
+      padding: 10px 0;
+      margin-bottom: 10px;
+    }
+
+    .item {
+      margin-bottom: 10px;
+    }
+
+    .total {
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .agradecimento {
+      text-align: center;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
     @media print {
-      body * { display: none; }
-      .print-area { display: block; }
+      body {
+        background: white;
+      }
+      .pedido-container {
+        box-shadow: none;
+        border: none;
+      }
     }
   </style>
 </head>
 <body>
-  <h2>📦 Impressão de Pedido - Space Burguer</h2>
-  <textarea id="pedido" placeholder="Cole aqui o pedido do WhatsApp..."></textarea>
-  <br/>
-  <button onclick="formatarPedido()">Formatar</button>
-  <button onclick="window.print()">Imprimir</button>
 
-  <div id="saida" class="print-area" style="display:none;"></div>
+  <div class="pedido-container">
+    <h2>🍔 SPACE BURGUER - NOVO PEDIDO</h2>
+
+    <div class="section"><strong>Cliente:</strong> Leonardo</div>
+    <div class="section"><strong>Serviço:</strong> Entrega</div>
+    <div class="section"><strong>Endereço:</strong> Rua Doutor Heráclio Gomes 539</div>
+    <div class="section"><strong>Bairro:</strong> Centro</div>
+    <div class="section"><strong>Taxa de Entrega:</strong> R$ 7,00</div>
+    <div class="section"><strong>Pagamento:</strong> PIX</div>
+
+    <div class="itens">
+      <div class="item">
+        <strong>1. Space Classic</strong><br/>
+        Obs: Ao ponto<br/>
+        ➕ Adicionais:<br/>
+        - 1x Hambúrguer 95g (+ R$ 6,50)
+      </div>
+      <div class="item">
+        <strong>2. Space Salad</strong>
+      </div>
+    </div>
+
+    <div class="total">TOTAL: R$ 58,30</div>
+    <div class="agradecimento">Obrigado pelo seu pedido! ❤️</div>
+  </div>
 
   <script>
-    function formatarPedido() {
-      const texto = document.getElementById("pedido").value;
-      const saida = document.getElementById("saida");
-      saida.innerText = texto;
-      saida.style.display = "block";
-    }
+    window.print();
   </script>
+
 </body>
 </html>
